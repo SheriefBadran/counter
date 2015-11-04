@@ -1,0 +1,50 @@
+{
+  "name": "react-es6-webpack-boilerplate",
+  "version": "2.0.0",
+  "description": "Boilerplate for kick starting a React Project with ES6 (Babel) and Hot reloader using Webpack.",
+  "main": "index.js",
+  "scripts": {
+    "start": "node server.js",
+    "build": "./node_modules/.bin/webpack --config webpack.config.js",
+    "lint": "./node_modules/.bin/eslint ."
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/vasanthk/react-es6-webpack-boilerplate.git"
+  },
+  "keywords": [
+    "react",
+    "es6",
+    "babel",
+    "webpack"
+  ],
+  "author": "Vasanth Krishnamoorthy (http://www.vasanthk.com)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/vasanthk/react-es6-webpack-boilerplate/issues"
+  },
+  "homepage": "https://github.com/vasanthk/react-es6-webpack-boilerplate",
+  "dependencies": {
+    "react": "^0.14.1",
+    "react-dom": "^0.14.1",
+    "react-router": "^0.13.5",
+    "redux": "^3.0.4",
+    "rx": "^4.0.0",
+    "ts-loader": "^0.6.0"
+  },
+  "devDependencies": {
+    "babel-core": "^5.6.18",
+    "babel-eslint": "^3.1.6",
+    "babel-loader": "^5.1.4",
+    "babel-plugin-react-transform": "^1.0.3",
+    "eslint": "^0.21.2",
+    "eslint-plugin-react": "^2.3.0",
+    "react-transform-webpack-hmr": "^0.1.4",
+    "webpack": "^1.8.4",
+    "webpack-dev-server": "^1.8.0",
+    "tsconfig-glob": "^0.2.1",
+    "tsd": "^0.6.4",
+    "tslint": "^2.5.0-dev.5",
+    "typescript": "^1.8.0-dev.20150916"
+  }
+}
