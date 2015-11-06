@@ -1,6 +1,6 @@
 {
     "compilerOptions": {
-        "jsx": "preserve",
+        "jsx": "react",
         "inlineSourceMap": true,
         "inlineSources": true,
         "target": "es6",

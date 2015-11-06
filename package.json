@@ -27,8 +27,10 @@
   "dependencies": {
     "react": "^0.14.1",
     "react-dom": "^0.14.1",
+    "react-redux": "^4.0.0",
     "react-router": "^0.13.5",
     "redux": "^3.0.4",
+    "redux-thunk": "^1.0.0",
     "rx": "^4.0.0",
     "ts-loader": "^0.6.0"
   },
@@ -45,6 +47,6 @@
     "tsconfig-glob": "^0.2.1",
     "tsd": "^0.6.4",
     "tslint": "^2.5.0-dev.5",
-    "typescript": "^1.8.0-dev.20150916"
+    "typescript": "^1.7.0-dev.20151016"
   }
 }
