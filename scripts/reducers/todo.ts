@@ -22,7 +22,7 @@ let todos = function (state = [], action) {
   switch (action.type) {
     case 'ADD_TODO':
       newState.push({
-        id: action.id,
+        id: action.id++,
         text: action.text,
         completed: false
       });

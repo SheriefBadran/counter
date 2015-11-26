@@ -15,10 +15,10 @@ type Properties = {
 };
 
 class TodoApp extends React.Component<Properties, State> {
+  private todoId: number = 0;
   constructor(props) {
     super(props);
   };
-
 
   render() {
     let input:any;
@@ -32,6 +32,7 @@ class TodoApp extends React.Component<Properties, State> {
           store.dispatch({
             type: 'ADD_TODO',
             text: input.value,
+            id: this.todoId++
           });
           input.value = '';
         }}>
@@ -40,12 +41,11 @@ class TodoApp extends React.Component<Properties, State> {
         <div>
         <ul>
           {
-            this.props.todos.map((todo, id) => (
-                <li key={id}>
-                  {todo.text}
-                </li>
-                )
-              )
+            this.props.todos.map((todo) =>
+              <li key={todo.id}>
+                {todo.text}
+              </li>
+            )
         }
         </ul>
         </div>
@@ -54,6 +54,7 @@ class TodoApp extends React.Component<Properties, State> {
   }
 }
 export default TodoApp;
+
 // The "connect" decorator takes, as its first parameter, a function that will select which slice of your
 // state you want to expose to your component. This function is logically called a "selector".
 // const mapStateToProps = (state) => {
