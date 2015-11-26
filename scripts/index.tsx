@@ -1,14 +1,17 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 import {Provider} from 'react-redux';
-import Counter from './components/counter';
+import TodoApp from './components/todo';
 import store from './store/configureStore';
 
 // const store = configureStore(initialState);
+const render = () => {
+  console.log('render');
+  ReactDOM.render(
+      <TodoApp todos={store.getState().todos}/>,
+    document.body
+  );
+}
 
-ReactDOM.render(
-  <Provider store={store}>
-    <Counter/>
-  </Provider>,
-  document.body
-);
+store.subscribe(render);
+render();
