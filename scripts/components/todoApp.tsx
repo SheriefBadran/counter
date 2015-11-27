@@ -5,6 +5,7 @@ import actions from '../actions/counter';
 import store from '../store/configureStore';
 import {FilterLink} from './filterLink';
 import {TodoList} from './todoList';
+import {AddTodo} from './addTodo';
 
 type Todo = {
   id: number,
@@ -30,19 +31,13 @@ export class TodoApp extends React.Component<Properties, {}> {
     let input;
     return (
       <div>
-        <input ref={node => {
-          input = node;
-        }} />
-        <button onClick={() => {
+        <AddTodo onAddClick={(text) => {
           store.dispatch({
             type: 'ADD_TODO',
-            text: input.value,
-            id: this.todoId++
+            id: this.todoId++,
+            text
           });
-          input.value = '';
-        }}>
-          Add Todo
-        </button>
+        }}/>
         <TodoList todos={filteredTodos} onTodoClick={(id) => store.dispatch({
           type: 'TOGGLE_TODO',
           id
