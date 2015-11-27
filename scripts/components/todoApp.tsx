@@ -6,6 +6,7 @@ import store from '../store/configureStore';
 import {FilterLink} from './filterLink';
 import {TodoList} from './todoList';
 import {AddTodo} from './addTodo';
+import {FilterPanel} from './filterPanel';
 
 type Todo = {
   id: number,
@@ -42,23 +43,12 @@ export class TodoApp extends React.Component<Properties, {}> {
           type: 'TOGGLE_TODO',
           id
         })}/>
-        <p>
-          Show:
-          {' '}
-          <FilterLink filter='SHOW_ALL' currentActive={filter}>
-            All
-          </FilterLink>
-
-          {' '}
-          <FilterLink filter='SHOW_ACTIVE' currentActive={filter}>
-            Active
-          </FilterLink>
-
-          {' '}
-          <FilterLink filter='SHOW_COMPLETED' currentActive={filter}>
-            Completed
-          </FilterLink>
-        </p>
+        <FilterPanel filter={filter} onFilterClick={filter => {
+          store.dispatch({
+            type: 'SET_FILTER',
+            filter
+          });
+        }}/>
       </div>
     );
   }
@@ -74,6 +64,24 @@ export class TodoApp extends React.Component<Properties, {}> {
     }
   }
 }
+
+// <p>
+//   Show:
+//   {' '}
+//   <FilterLink filter='SHOW_ALL' currentActive={filter}>
+//     All
+//   </FilterLink>
+//
+//   {' '}
+//   <FilterLink filter='SHOW_ACTIVE' currentActive={filter}>
+//     Active
+//   </FilterLink>
+//
+//   {' '}
+//   <FilterLink filter='SHOW_COMPLETED' currentActive={filter}>
+//     Completed
+//   </FilterLink>
+// </p>
 
 // The "connect" decorator takes, as its first parameter, a function that will select which slice of your
 // state you want to expose to your component. This function is logically called a "selector".

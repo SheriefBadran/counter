@@ -7,7 +7,8 @@ import store from '../store/configureStore';
 type Properties = {
   filter: string,
   children?: JSX.Element, // Children props must be optional since the children props are not declare the "normal" way
-  currentActive: string;
+  currentActive: string,
+  onClick: Function
 }
 
 export class FilterLink extends React.Component<Properties, {}> {
@@ -16,7 +17,7 @@ export class FilterLink extends React.Component<Properties, {}> {
   };
 
   render() {
-    const {children, filter, currentActive} = this.props;
+    const {children, filter, currentActive, onClick} = this.props;
     if (currentActive === filter) {
       console.log('render active: ', children);
       return <span>{children}</span>;
@@ -25,10 +26,7 @@ export class FilterLink extends React.Component<Properties, {}> {
     return (
       <a href="#" onClick={(e) => {
         e.preventDefault();
-        store.dispatch({
-          type: 'SET_FILTER',
-          filter
-        });
+        onClick(filter);
       }}>
         {children}
       </a>
