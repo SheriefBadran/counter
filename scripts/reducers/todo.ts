@@ -21,12 +21,7 @@ let todos = function (state = [], action) {
   const newState = Object.assign([], state);
   switch (action.type) {
     case 'ADD_TODO':
-      newState.push({
-        id: action.id++,
-        text: action.text,
-        completed: false
-      });
-      console.log(newState);
+      newState.push(todo(undefined, action));
       return newState;
     case 'TOGGLE_TODO':
       return state.map(t =>todo(t, action));
