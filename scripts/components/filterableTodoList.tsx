@@ -8,11 +8,13 @@ type Todo = {
   completed: boolean
 }
 
-export class FilterableTodoList extends React.Component<{}, {}> {
+type State = {
+  todos: Todo[],
+  filter: string
+}
+
+export class FilterableTodoList extends React.Component<{}, State> {
   private unsubscribe: Function;
-  constructor(props) {
-    super(props);
-  }
 
   componentDidMount() {
     this.unsubscribe = store.subscribe(() => {
@@ -27,8 +29,8 @@ export class FilterableTodoList extends React.Component<{}, {}> {
   }
 
   render() {
-    const props = this.props;
-    const state = store.getState();
+    this.state = store.getState();
+    const state = this.state;
     return (
       <TodoList
         todos={this.getFilteredTodos(state.todos, state.filter)}

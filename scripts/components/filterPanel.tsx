@@ -2,10 +2,6 @@ import * as React from 'react';
 import {FilterLink} from './filterLink';
 
 export class FilterPanel extends React.Component<{}, {}> {
-  constructor(props) {
-    super(props);
-  }
-
   render() {
     return(
       <p>

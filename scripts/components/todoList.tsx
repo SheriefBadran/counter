@@ -18,7 +18,7 @@ export class TodoList extends React.Component<Properties, {}> {
         <ul>
           {
             todos
-              .map((todo, id) => (
+              .map((todo) => (
                   <Todo key={todo.id}
                         completed={todo.completed}
                         text={todo.text}

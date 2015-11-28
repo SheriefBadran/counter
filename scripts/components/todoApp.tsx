@@ -1,11 +1,7 @@
 import * as React from 'react';
-import {connect} from 'react-redux';
-import store from '../store/configureStore';
-import {FilterLink} from './filterLink';
-import {TodoList} from './todoList';
 import {AddTodo} from './addTodo';
-import {FilterPanel} from './filterPanel';
 import {FilterableTodoList} from './filterableTodoList';
+import {FilterPanel} from './filterPanel';
 
 export class TodoApp extends React.Component<{}, {}> {
   private todoId: number = 0;
