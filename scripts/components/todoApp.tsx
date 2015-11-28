@@ -1,7 +1,5 @@
 import * as React from 'react';
-import {render} from 'react-dom';
 import {connect} from 'react-redux';
-import actions from '../actions/counter';
 import store from '../store/configureStore';
 import {FilterLink} from './filterLink';
 import {TodoList} from './todoList';
@@ -64,24 +62,6 @@ export class TodoApp extends React.Component<Properties, {}> {
     }
   }
 }
-
-// <p>
-//   Show:
-//   {' '}
-//   <FilterLink filter='SHOW_ALL' currentActive={filter}>
-//     All
-//   </FilterLink>
-//
-//   {' '}
-//   <FilterLink filter='SHOW_ACTIVE' currentActive={filter}>
-//     Active
-//   </FilterLink>
-//
-//   {' '}
-//   <FilterLink filter='SHOW_COMPLETED' currentActive={filter}>
-//     Completed
-//   </FilterLink>
-// </p>
 
 // The "connect" decorator takes, as its first parameter, a function that will select which slice of your
 // state you want to expose to your component. This function is logically called a "selector".

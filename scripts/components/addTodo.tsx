@@ -22,14 +22,7 @@ export class AddTodo extends React.Component<Properties, {}> {
         }}>
           Add Todo
         </button>
-
       </div>
     )
   }
 }
-
-// store.dispatch({
-//   type: 'ADD_TODO',
-//   text: input.value,
-//   id: this.todoId++
-// });
