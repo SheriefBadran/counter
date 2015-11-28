@@ -1,33 +1,27 @@
 import * as React from 'react';
 import {FilterLink} from './filterLink';
 
-type Properties = {
-  filter: string,
-  onFilterClick: Function
-};
-
-export class FilterPanel extends React.Component<Properties, {}> {
+export class FilterPanel extends React.Component<{}, {}> {
   constructor(props) {
     super(props);
   }
 
   render() {
-    const {filter, onFilterClick} = this.props;
     return(
       <p>
         Show:
         {' '}
-        <FilterLink filter='SHOW_ALL' onClick={onFilterClick} currentActive={filter}>
+        <FilterLink filter='SHOW_ALL'>
           All
         </FilterLink>
 
         {' '}
-        <FilterLink filter='SHOW_ACTIVE' onClick={onFilterClick} currentActive={filter}>
+        <FilterLink filter='SHOW_ACTIVE'>
           Active
         </FilterLink>
 
         {' '}
-        <FilterLink filter='SHOW_COMPLETED' onClick={onFilterClick} currentActive={filter}>
+        <FilterLink filter='SHOW_COMPLETED'>
           Completed
         </FilterLink>
       </p>

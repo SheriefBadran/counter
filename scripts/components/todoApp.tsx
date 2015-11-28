@@ -41,12 +41,7 @@ export class TodoApp extends React.Component<Properties, {}> {
           type: 'TOGGLE_TODO',
           id
         })}/>
-        <FilterPanel filter={filter} onFilterClick={filter => {
-          store.dispatch({
-            type: 'SET_FILTER',
-            filter
-          });
-        }}/>
+        <FilterPanel/>
       </div>
     );
   }

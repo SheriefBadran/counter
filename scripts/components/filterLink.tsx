@@ -3,33 +3,46 @@ import {render} from 'react-dom';
 import {connect} from 'react-redux';
 import actions from '../actions/counter';
 import store from '../store/configureStore';
+import {Link} from './link';
 
 type Properties = {
   filter: string,
   children?: JSX.Element, // Children props must be optional since the children props are not declare the "normal" way
-  currentActive: string,
-  onClick: Function
 }
 
-export class FilterLink extends React.Component<Properties, {}> {
+type State = {
+  filter: string
+}
+
+export class FilterLink extends React.Component<Properties, State> {
+  private unsubscribe: Function;
+
   constructor(props) {
     super(props);
   };
 
+  componentDidMount() {
+    this.unsubscribe = store.subscribe(() => {
+      this.forceUpdate();
+    });
+  };
+
+  componentWillUnmount() {
+    this.unsubscribe();
+  }
+
   render() {
-    const {children, filter, currentActive, onClick} = this.props;
-    if (currentActive === filter) {
-      console.log('render active: ', children);
-      return <span>{children}</span>;
-    }
+    const {children, filter} = this.props;
+    this.state = store.getState();
 
     return (
-      <a href="#" onClick={(e) => {
-        e.preventDefault();
-        onClick(filter);
+      <Link active={filter === this.state.filter} onClick={() => {store.dispatch({
+          type: 'SET_FILTER',
+          filter: filter
+        })
       }}>
         {children}
-      </a>
-    )
+      </Link>
+    );
   }
 }
