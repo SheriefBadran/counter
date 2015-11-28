@@ -1,23 +1,19 @@
 import * as React from 'react';
+import store from '../store/configureStore';
 
-type Properties = {
-  onAddClick: Function
-}
-
-export class AddTodo extends React.Component<Properties, {}> {
-
-  constructor(props) {
-    super(props);
-  }
-
+export class AddTodo extends React.Component<{}, {}> {
+  private todoId: number = 0;
   render() {
-    const {onAddClick} = this.props;
     let input;
     return(
       <div>
         <input ref={(node) => {input = node;}} />
-        <button onClick={() => {
-          onAddClick(input.value);
+        <button onClick={(text) => {
+          store.dispatch({
+            type: 'ADD_TODO',
+            id: this.todoId++,
+            text: input.value
+          });
           input.value = '';
         }}>
           Add Todo
