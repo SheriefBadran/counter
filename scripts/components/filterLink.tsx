@@ -23,11 +23,13 @@ export class FilterLink extends React.Component<Properties, State> {
 
   componentDidMount() {
     this.unsubscribe = store.subscribe(() => {
+      console.log('force update');
       this.forceUpdate();
     });
   };
 
   componentWillUnmount() {
+    console.log('unsubscribe');
     this.unsubscribe();
   }
 

@@ -5,6 +5,7 @@ import {FilterLink} from './filterLink';
 import {TodoList} from './todoList';
 import {AddTodo} from './addTodo';
 import {FilterPanel} from './filterPanel';
+import {FilterableTodoList} from './filterableTodoList';
 
 type Todo = {
   id: number,
@@ -26,7 +27,7 @@ export class TodoApp extends React.Component<Properties, {}> {
   render() {
     const {todos, filter} = this.props;
     console.log("What is filter for type: ", typeof this.props.filter);
-    const filteredTodos = this.getFilteredTodos(todos, filter);
+    // const filteredTodos = this.getFilteredTodos(todos, filter);
     let input;
     return (
       <div>
@@ -37,25 +38,22 @@ export class TodoApp extends React.Component<Properties, {}> {
             text
           });
         }}/>
-        <TodoList todos={filteredTodos} onTodoClick={(id) => store.dispatch({
-          type: 'TOGGLE_TODO',
-          id
-        })}/>
+        <FilterableTodoList/>
         <FilterPanel/>
       </div>
     );
   }
 
-  private getFilteredTodos(todos:Todo[], filter) {
-    switch(filter) {
-      case 'SHOW_ALL':
-        return todos;
-      case 'SHOW_COMPLETED':
-        return todos.filter(todo => todo.completed);
-      case 'SHOW_ACTIVE':
-        return todos.filter(todo => !todo.completed);
-    }
-  }
+  // private getFilteredTodos(todos:Todo[], filter) {
+  //   switch(filter) {
+  //     case 'SHOW_ALL':
+  //       return todos;
+  //     case 'SHOW_COMPLETED':
+  //       return todos.filter(todo => todo.completed);
+  //     case 'SHOW_ACTIVE':
+  //       return todos.filter(todo => !todo.completed);
+  //   }
+  // }
 }
 
 // The "connect" decorator takes, as its first parameter, a function that will select which slice of your
